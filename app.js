@@ -2,18 +2,38 @@ let listaDeNumerosSorteados = [];
 let numeroLimite = 1000;
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 1;
+let nomeJogador = '';
+
+function pedirNome() {
+    nomeJogador = prompt('Digite seu nome para começar:');
+    
+    if (!nomeJogador) {
+        nomeJogador = 'Jogador';
+    }
+}
 
 function exibirTextoNaTela(tag, texto) {
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
-    responsiveVoice.speak(texto, 'Brazilian Portuguese Female', {rate:1.2});
+    responsiveVoice.speak(texto, 'Brazilian Portuguese Female', {rate:1.1});
 }
 
 function exibirMensagemInicial() {
-    exibirTextoNaTela('h1', 'Jogo do número secreto');
-    exibirTextoNaTela('p', 'Escolha um número entre 1 e 1000');
+    let titulo = `Bem-vindo, ${nomeJogador}!`;
+    let paragrafo = 'Escolha um número entre 1 e 1000';
+
+    document.querySelector('h1').innerHTML = titulo;
+    document.querySelector('p').innerHTML = paragrafo;
+
+    responsiveVoice.cancel();
+    responsiveVoice.speak(
+        titulo + ' ' + paragrafo,
+        'Brazilian Portuguese Female',
+        { rate: 1 }
+    );
 }
 
+pedirNome();
 exibirMensagemInicial();
 
 function verificarChute() {
@@ -61,8 +81,9 @@ function reiniciarJogo() {
     numeroSecreto = gerarNumeroAleatorio();
     limparCampo();
     tentativas = 1;
+    pedirNome(); // pede nome novamente
     exibirMensagemInicial();
-    document.getElementById('reiniciar').setAttribute('disabled', true)
+    document.getElementById('reiniciar').setAttribute('disabled', true);
 }
 
 
