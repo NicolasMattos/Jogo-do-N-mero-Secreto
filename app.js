@@ -5,7 +5,7 @@ let tentativas = 1;
 let nomeJogador = '';
 
 function pedirNome() {
-    nomeJogador = prompt('Digite seu nome para começar:');
+    nomeJogador = prompt('Quem está jogando?');
     
     if (!nomeJogador) {
         nomeJogador = 'Jogador';
