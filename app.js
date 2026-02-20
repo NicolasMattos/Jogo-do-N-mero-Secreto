@@ -1,5 +1,5 @@
 let listaDeNumerosSorteados = [];
-let numeroLimite = 1000;
+let numeroLimite = 500;
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 1;
 let nomeJogador = '';
@@ -85,7 +85,6 @@ function reiniciarJogo() {
     exibirMensagemInicial();
     document.getElementById('reiniciar').setAttribute('disabled', true);
 }
-
 
 
 
